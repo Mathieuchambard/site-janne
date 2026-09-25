@@ -1,0 +1,390 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-secondary);
+  transition: padding 0.25s ease;
+}
+
+.header-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin: 0;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  box-sizing: border-box;
+  transition: padding 0.25s ease;
+}
+
+.header-wave-wrapper {
+  overflow: hidden;
+  line-height: 0;
+}
+
+.header-wave {
+  display: block;
+  width: 100%;
+  height: 20px;
+}
+
+/* ---------- LOGO ---------- */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  line-height: 1.1;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-right: auto;
+
+  .logo-icon {
+    height: 64px;
+    width: auto;
+    flex-shrink: 0;
+    transition: height 0.25s ease;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo-name {
+    font-family: var(--font-title);
+    font-weight: 600;
+    font-size: 2.2rem;
+    color: var(--color-primary);
+    transition: font-size 0.25s ease;
+  }
+
+  .logo-subtitle {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color-text);
+    margin-top: 2px;
+  }
+}
+
+/* ---------- MENU DESKTOP ---------- */
+.main-nav {
+  ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-item {
+    position: relative;
+
+    > a,
+    > .nav-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      width: 115px;
+      padding: 0.5rem 0;
+      color: var(--color-text);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-align: center;
+      white-space: normal;
+      line-height: 1.25;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+
+      &:hover,
+      &.active {
+        color: var(--color-primary);
+        border-color: var(--color-primary);
+      }
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--color-bg);
+      border: 1px solid var(--color-accent);
+      border-radius: 6px;
+      min-width: 240px;
+      box-shadow: 0 8px 24px rgba(183, 65, 14, 0.12);
+      list-style: none;
+      margin: 0;
+      padding: 8px 0 0.5rem;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+      z-index: 200;
+
+      li a {
+        display: block;
+        width: auto;
+        padding: 0.6rem 1.2rem;
+        text-align: left;
+        white-space: nowrap;
+        color: var(--color-text);
+        text-decoration: none;
+        font-size: 0.9rem;
+        border-bottom: none;
+
+        &:hover,
+        &.active {
+          background: var(--color-secondary);
+          color: var(--color-primary-dark);
+        }
+      }
+    }
+
+    &.menu-open .dropdown {
+      display: block;
+      opacity: 1;
+    }
+  }
+}
+
+.btn-rdv {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.6rem 1.4rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.2s;
+
+  &:hover {
+    background: var(--color-primary-dark);
+  }
+}
+
+/* ---------- BURGER (mobile uniquement) ---------- */
+.burger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  z-index: 300;
+  position: relative;
+
+  span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-primary);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  &.open {
+    span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+  }
+}
+
+/* ---------- MENU MOBILE PLEIN ECRAN ---------- */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 82%;
+  max-width: 340px;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--color-bg);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.1);
+  z-index: 250;
+  padding: 5.5rem 1.5rem 2rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+  transition: right 0.3s ease;
+
+  &.open {
+    right: 0;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.mobile-nav-item {
+  border-bottom: 1px solid var(--color-accent);
+
+  > a {
+    display: block;
+    padding: 1rem 0;
+    color: var(--color-text);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+
+    &.active {
+      color: var(--color-primary);
+    }
+  }
+}
+
+.mobile-parent-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  padding: 1rem 0;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-text);
+  cursor: pointer;
+
+  &.active {
+    color: var(--color-primary);
+  }
+
+  .chevron {
+    font-size: 1.3rem;
+    transition: transform 0.25s ease;
+
+    &.rotated {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.mobile-submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding-left: 1rem;
+
+  &.open {
+    max-height: 500px;
+  }
+
+  li a {
+    display: block;
+    padding: 0.7rem 0;
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+
+    &.active {
+      color: var(--color-primary);
+    }
+  }
+}
+
+.mobile-btn-rdv {
+  display: block;
+  text-align: center;
+  margin-top: 1.5rem;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.9rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 240;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+
+  &.open {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* ---------- Scroll compact ---------- */
+.site-header.scrolled {
+  .header-inner {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .logo-icon {
+    height: 44px;
+  }
+
+  .logo-name {
+    font-size: 1.6rem;
+  }
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  .main-nav {
+    display: none;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .burger-btn {
+    display: flex;
+  }
+
+  .mobile-nav {
+    display: block;
+  }
+
+  .logo-icon {
+    height: 44px;
+  }
+
+  .logo-name {
+    font-size: 1.5rem;
+  }
+
+  .logo-subtitle {
+    font-size: 0.6rem;
+  }
+}

@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --color-primary: #B7410E;       // terracotta / brique
+  --color-primary-dark: #8C3009;  // hover, texte sur clair
+  --color-primary-light: #D9754A; // accents, survols doux
+  --color-secondary: #F4E7DD;     // beige clair, fonds de section
+  --color-accent: #EFDCCB;        // fonds de cartes
+  --color-text: #2E2622;          // texte principal
+  --color-text-light: #6B5F57;    // texte secondaire
+  --color-bg: #FFFDFB;            // fond général
+  --font-title: 'Cormorant Garamond', serif;
+  --font-body: 'Poppins', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-title);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 0.5rem;
+}
+
+h1 {
+  font-size: 2.4rem;
+  color: var(--color-primary);
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}

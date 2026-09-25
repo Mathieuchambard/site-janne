@@ -1,0 +1,95 @@
+<header class="site-header" [class.scrolled]="isScrolled">
+  <div class="header-inner">
+    <a routerLink="/" class="logo" (click)="closeMobileMenu()">
+      <img src="logo.svg" alt="Logo Janne Da Costa" class="logo-icon" />
+      <span class="logo-text">
+        <span class="logo-name">Janne Da Costa</span>
+        <span class="logo-subtitle">Sage-femme libérale — Lyon 2</span>
+      </span>
+    </a>
+
+    <!-- Menu desktop -->
+    <nav class="main-nav">
+      <ul>
+        <li
+          *ngFor="let item of menuItems; let i = index"
+          class="nav-item"
+          [class.has-children]="item.children"
+          [class.menu-open]="openMenuIndex === i"
+          (mouseenter)="item.children && onMenuEnter(i)"
+          (mouseleave)="item.children && onMenuLeave()"
+        >
+          <a *ngIf="item.link" [routerLink]="item.link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            {{ item.label }}
+          </a>
+          <span *ngIf="!item.link" class="nav-label" [class.active]="isParentActive(item)">
+            {{ item.label }}
+          </span>
+
+          <ul class="dropdown" *ngIf="item.children">
+            <li *ngFor="let child of item.children">
+              <a [routerLink]="child.link" routerLinkActive="active">{{ child.label }}</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <a [href]="doctolibUrl" target="_blank" rel="noopener" class="btn-rdv desktop-only">
+      Prendre rendez-vous
+    </a>
+
+    <!-- Bouton burger, visible uniquement sur mobile -->
+    <button
+      class="burger-btn"
+      [class.open]="isMobileMenuOpen"
+      (click)="toggleMobileMenu()"
+      aria-label="Ouvrir le menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div class="header-wave-wrapper">
+    <svg class="header-wave" viewBox="0 0 1440 40" preserveAspectRatio="none">
+      <path d="M0,20 Q360,40 720,20 T1440,20 V40 H0 Z" fill="var(--color-bg)"/>
+    </svg>
+  </div>
+
+  <!-- Menu mobile plein écran -->
+  <nav class="mobile-nav" [class.open]="isMobileMenuOpen">
+    <ul>
+      <li *ngFor="let item of menuItems; let i = index" class="mobile-nav-item">
+        <ng-container *ngIf="item.link; else parentBlock">
+          <a [routerLink]="item.link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMobileMenu()">
+            {{ item.label }}
+          </a>
+        </ng-container>
+
+        <ng-template #parentBlock>
+          <button class="mobile-parent-btn" (click)="toggleMobileSubmenu(i)" [class.active]="isParentActive(item)">
+            {{ item.label }}
+            <span class="chevron" [class.rotated]="mobileOpenSubmenu === i">›</span>
+          </button>
+
+          <ul class="mobile-submenu" [class.open]="mobileOpenSubmenu === i">
+            <li *ngFor="let child of item.children">
+              <a [routerLink]="child.link" routerLinkActive="active" (click)="closeMobileMenu()">
+                {{ child.label }}
+              </a>
+            </li>
+          </ul>
+        </ng-template>
+      </li>
+    </ul>
+
+    <a [href]="doctolibUrl" target="_blank" rel="noopener" class="mobile-btn-rdv" (click)="closeMobileMenu()">
+      Prendre rendez-vous
+    </a>
+  </nav>
+
+  <!-- Overlay sombre derrière le menu mobile -->
+  <div class="mobile-overlay" [class.open]="isMobileMenuOpen" (click)="closeMobileMenu()"></div>
+</header>

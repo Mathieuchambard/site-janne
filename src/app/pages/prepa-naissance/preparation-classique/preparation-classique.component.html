@@ -1,0 +1,144 @@
+<section class="prep-page">
+  <div class="prep-header">
+    <h1>Entretien prénatal précoce</h1>
+    <p class="prep-intro">
+    </p>
+  </div>
+</section>
+
+<section class="prep-page">
+  <div class="prep-header">
+    <h1>Préparation à la naissance et à la parentalité</h1>
+    <p class="prep-intro">
+      Tout au long de ces séances, je vous accompagne pour vous préparer physiquement et psychologiquement à l'accouchement et à l'arrivée de bébé. Elles permettent de mieux comprendre le déroulement du travail, d'acquérir des outils concrets pour gérer la douleur et de poser toutes vos questions en toute confiance. La plupart des séances se déroulent en groupe, favorisant les échanges entre futurs parents, tandis que les deux dernières séances sont individuelles pour un accompagnement plus personnalisé.
+    </p>
+    <p class="prea-intro">
+      Si ce n'est pas votre première grossesse, le contenu est adapté en conséquence : je propose alors des exercices tels que la respiration abdominale, la relaxation, la sophrologie ou un accompagnement dédié au retour à la maison.
+    </p>
+  </div>
+
+  <div class="sessions-list">
+
+    <div class="session-card" [class.open]="openSessions[0]">
+      <button class="session-header" (click)="toggleSession(0)">
+        <span class="session-number">Séance 1</span>
+        <span class="session-badge badge-group">En groupe</span>
+        <span class="session-chevron">▾</span>
+      </button>
+      <div class="session-body">
+        <ul class="session-content">
+          <li>Rappels d'anatomie</li>
+          <li>Quand consulter à la maternité ?</li>
+          <li>Le pré-travail et l'arrivée à la maternité</li>
+          <li>Physiologie : le déroulé du travail, des premières contractions jusqu'à la naissance</li>
+          <li>Le contenu de la valise de maternité</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="session-card" [class.open]="openSessions[1]">
+      <button class="session-header" (click)="toggleSession(1)">
+        <span class="session-number">Séance 2</span>
+        <span class="session-badge badge-group">En groupe</span>
+        <span class="session-chevron">▾</span>
+      </button>
+      <div class="session-body">
+        <ul class="session-content">
+          <li>La délivrance du placenta</li>
+          <li>La surveillance après l'accouchement</li>
+          <li>Les complications et aides médicales possibles de l'accouchement</li>
+          <li>Le séjour à la maternité</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="session-card" [class.open]="openSessions[2]">
+      <button class="session-header" (click)="toggleSession(2)">
+        <span class="session-number">Séance 3</span>
+        <span class="session-badge badge-group">En groupe</span>
+        <span class="session-chevron">▾</span>
+      </button>
+      <div class="session-body">
+        <ul class="session-content">
+          <li>Le nouveau-né : ses besoins, les pleurs, son rythme et son sommeil</li>
+          <li>Les petits soins du bébé</li>
+          <li>Quoi prévoir pour l'arrivée du bébé ? — liste de naissance</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="session-card" [class.open]="openSessions[3]">
+      <button class="session-header" (click)="toggleSession(3)">
+        <span class="session-number">Séance 4</span>
+        <span class="session-badge badge-group">En groupe</span>
+        <span class="session-chevron">▾</span>
+      </button>
+      <div class="session-body">
+        <ul class="session-content">
+          <li>Allaitement maternel : physiologie, bienfaits, rythme, etc.</li>
+          <li>Tire-allaitement</li>
+          <li>Le lait artificiel (rapide)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="session-card" [class.open]="openSessions[4]">
+      <button class="session-header" (click)="toggleSession(4)">
+        <span class="session-number">Séance 5</span>
+        <span class="session-badge badge-group">En groupe</span>
+        <span class="session-chevron">▾</span>
+      </button>
+      <div class="session-body">
+        <ul class="session-content">
+          <li>Le suivi médical de la mère et de l'enfant au retour à la maison</li>
+          <li>Les bouleversements physiques et psychologiques chez la mère</li>
+          <li>Périnée : prévention</li>
+          <li>Contraception</li>
+          <li>Comment anticiper et préparer cette période au mieux ?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="session-card" [class.open]="openSessions[5]">
+      <button class="session-header" (click)="toggleSession(5)">
+        <span class="session-number">Séance 6</span>
+        <span class="session-badge badge-individual">En individuel</span>
+        <span class="session-chevron">▾</span>
+      </button>
+      <div class="session-body">
+        <ul class="session-content">
+          <li>Les besoins de la femme en travail : comment l'accompagner et la soutenir au mieux ?</li>
+          <li>
+            Outils de gestion de la douleur :
+            <ul class="sub-list">
+              <li>Médicamenteux (péridurale...)</li>
+              <li>Non médicamenteux (respiration, posture, massages...)</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="session-card" [class.open]="openSessions[6]">
+      <button class="session-header" (click)="toggleSession(6)">
+        <span class="session-number">Séance 7</span>
+        <span class="session-badge badge-individual">En individuel</span>
+        <span class="session-chevron">▾</span>
+      </button>
+      <div class="session-body">
+        <ul class="session-content">
+          <li>La poussée en pratique</li>
+          <li>Révisions, questions</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="prep-page">
+  <div class="prep-header">
+    <h1>Séance Sophrologie</h1>
+  
+  </div>
+</section>
